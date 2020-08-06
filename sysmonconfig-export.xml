@@ -4,13 +4,19 @@
   Source project:	https://github.com/SwiftOnSecurity/sysmon-config
   Source license:	Creative Commons Attribution 4.0 | You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
 
-  Fork version:	<N/A>
-  Fork author:	<N/A>
+  Fork version:	1 | Date: 2020-04-30
+  Fork author:	Scott Sander (Bankers Healthcare Group)
   Fork project:	<N/A>
-  Fork license:	<N/A>
+  Fork license:	Creative Commons Attribution 4.0 | You may privatize, fork, edit, teach, publish, or deploy for commercial use - with attribution in the text.
+  
+  ATTRIBUTION: This Sysmon configuration file is based on version 71 of the SwiftOnSecurity sysmon-config project on GitHub.
 
   REQUIRED: Sysmon version 10.0.4.1 or higher (due to changes in syntax and bug-fixes)
 	https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+	
+  NOTE: This file has been forked from the original SwiftOnSecurity configuration (see attribution above). Modifications are marked with comments:
+    <![]-- Start BHG Customizations --[]>
+	<![]-- End BHG Customizations --[]>
 
   NOTE: To collect Sysmon logs centrally for free, see https://aka.ms/WEF | Command to allow log access to the Network Service:
 	wevtutil.exe sl Microsoft-Windows-Sysmon/Operational /ca:O:BAG:SYD:(A;;0xf0005;;;SY)(A;;0x5;;;BA)(A;;0x1;;;S-1-5-32-573)(A;;0x1;;;NS)
@@ -1059,6 +1065,17 @@
 			<QueryName condition="is">status.rapidssl.com</QueryName>
 			<QueryName condition="is">status.thawte.com</QueryName>
 			<QueryName condition="is">ocsp.int-x3.letsencrypt.org</QueryName>
+			<!-- Begin BHG Customizations -->
+			<QueryName condition="is">bhg-dc1-jaskwec.bhg.com</QueryName>
+			<QueryName condition="is">autodiscover.bhg-inc.com</QueryName>
+			<QueryName condition="is">mail.bhg-inc.com</QueryName>
+			<QueryName condition="end with">.mimecast.com</QueryName>
+			<QueryName condition="end with">.teams.cdn.office.net</QueryName>
+			<QueryName condition="is">bhg-ext.okta.com</QueryName>
+			<QueryName condition="is">bhg-inc.kerberos.okta.com</QueryName>
+			<QueryName condition="is">bhg-inc.okta.com</QueryName>
+			<QueryName condition="end with">.sophosupd.com</QueryName>
+			<!-- End BHG Customizations -->
 		</DnsQuery>
 	</RuleGroup>
 
